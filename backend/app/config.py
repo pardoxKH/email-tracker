@@ -8,7 +8,7 @@ class Settings(BaseSettings):
     model_config = SettingsConfigDict(env_file=".env", extra="ignore")
 
     anthropic_api_key: str | None = None
-    claude_model: str = "claude-opus-5-5"
+    claude_model: str = "claude-sonnet-5-5"
     # Effort controls how hard Claude thinks per email; "low" keeps syncs fast and cheap.
     claude_effort: str = "low"
 
