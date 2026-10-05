@@ -63,7 +63,7 @@ Set these in `backend/.env`:
 | Variable | Default | Purpose |
 |---|---|---|
 | `ANTHROPIC_API_KEY` | (required) | Claude API key |
-| `CLAUDE_MODEL` | `claude-opus-5-5` | Model used for extraction |
+| `CLAUDE_MODEL` | `claude-sonnet-5-5` | Model used for extraction |
 | `CLAUDE_EFFORT` | `low` | How much Claude thinks per email (`low`, `medium`, `high`) |
 | `GMAIL_QUERY` | `in:inbox newer_than:7d` | Any Gmail search query |
 | `MAX_EMAILS_PER_SYNC` | `25` | Cap on emails fetched per sync |

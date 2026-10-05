@@ -85,13 +85,13 @@ class FakeMessages:
 def test_extractor_returns_parsed_actions():
     parsed = ExtractionResult(actions=[action()])
     messages = FakeMessages(SimpleNamespace(stop_reason="end_turn", parsed_output=parsed))
-    extractor = Extractor(SimpleNamespace(messages=messages), model="claude-opus-5-5")
+    extractor = Extractor(SimpleNamespace(messages=messages), model="claude-sonnet-5-5")
 
     result = extractor.extract(make_email(), today=date(2026, 10, 5))
 
     assert [a.title for a in result] == ["Sign contract"]
     call = messages.calls[0]
-    assert call["model"] == "claude-opus-5-5"
+    assert call["model"] == "claude-sonnet-5-5"
     assert call["output_format"] is ExtractionResult
     assert "2026-10-05" in call["messages"][0]["content"]
     assert "signed contract" in call["messages"][0]["content"]
@@ -99,7 +99,7 @@ def test_extractor_returns_parsed_actions():
 
 def test_extractor_handles_refusal():
     messages = FakeMessages(SimpleNamespace(stop_reason="refusal", parsed_output=None))
-    extractor = Extractor(SimpleNamespace(messages=messages), model="claude-opus-5-5")
+    extractor = Extractor(SimpleNamespace(messages=messages), model="claude-sonnet-5-5")
     assert extractor.extract(make_email()) == []
 
 
